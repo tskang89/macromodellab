@@ -84,10 +84,12 @@ return {
     end
     local sep = src:find("?", 1, true) and "&" or "?"
     src = src .. sep .. "embed=true&embed_options=light_theme"
+    -- body 에 mml-fullapp 를 달면 CSS 가 제목·소개·바닥글을 숨기고 앱이 본문 영역 전체를 채운다.
     return pandoc.RawBlock("html", string.format(
-      '<div class="mml-app"><iframe src="%s" title="%s" loading="lazy" ' ..
-      'allow="clipboard-write; fullscreen"></iframe></div>' ..
-      '<p class="mml-app-note">%s</p>',
-      esc(src), L.frame, L.wake))
+      '<script>document.body.classList.add("mml-fullapp")</script>' ..
+      '<div class="mml-app"><iframe src="%s" title="%s" ' ..
+      'allow="clipboard-write; fullscreen"></iframe>' ..
+      '<a class="mml-app-open" href="%s" target="_blank" rel="noopener" title="%s">%s ↗</a></div>',
+      esc(src), L.frame, esc(url), L.wake, L.app))
   end
 }

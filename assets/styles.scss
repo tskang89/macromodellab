@@ -160,26 +160,55 @@ table {
   margin: 1.5rem 0;
 }
 
-// 본문에 끼워 넣은 앱({{< app >}})
-.mml-app {
-  margin: 0.5rem 0 0.4rem;
-  border: 1px solid $border-color;
-  border-radius: 6px;
+// 앱 페이지({{< app >}}): 왼쪽 사이트 메뉴만 남기고 오른쪽 전체를 앱으로 채운다.
+// 제목·소개·버튼·바닥글은 숨긴다(검색용으로 HTML 에는 남아 있음).
+body.mml-fullapp {
   overflow: hidden;
-  background: #fff;
+
+  #quarto-content { padding-top: 0 !important; margin-top: 0 !important; }
+  main.content {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100%;
+    grid-column: body-content-start / screen-end !important;  // 오른쪽 여백까지 채움
+  }
+  @media (max-width: 991.98px) {
+    main.content { grid-column: screen-start / screen-end !important; }  // 좌우 여백 없음
+  }
+  main.content > *:not(.mml-app) { display: none !important; }
+  .nav-footer, #quarto-margin-sidebar { display: none !important; }
+}
+.mml-app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
 
   iframe {
     display: block;
     width: 100%;
-    height: calc(100vh - 3rem);
-    min-height: 640px;
+    height: 100%;
     border: 0;
   }
 }
-.mml-app-note {
+.mml-app-open {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
   color: $text-muted;
-  font-size: 0.85rem;
-  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  text-decoration: none;
+
+  &:hover { color: $primary; }
+}
+// 좁은 화면: 사이트 메뉴가 위쪽 막대로 접히므로 그 높이만큼 뺀다
+@media (max-width: 991.98px) {
+  .mml-app { height: calc(100dvh - 61px); }   // 61px = 접힌 사이트 메뉴 막대(실측)
 }
 
 // 첫 화면 목록
