@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "DSGE Models"
 description: "Building, solving and estimating dynamic stochastic general equilibrium models."
 ---
@@ -8,3 +10,5 @@ Introductory paragraph goes here: the purpose of this topic, the methods covered
 :::
 
 {{< links dsge >}}
+
+{{< app dsge >}}

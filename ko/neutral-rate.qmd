@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "중립금리 추정"
 description: "실질 중립금리를 여러 모형으로 추정하고 통화정책 기조를 판단한다."
 ---
@@ -8,3 +10,5 @@ description: "실질 중립금리를 여러 모형으로 추정하고 통화정�
 :::
 
 {{< links neutral-rate >}}
+
+{{< app neutral-rate >}}

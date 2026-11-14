@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "HANK Models"
 description: "Heterogeneous-agent New Keynesian models: distribution and the transmission of monetary and fiscal policy."
 ---
@@ -8,3 +10,5 @@ Introductory paragraph goes here: the purpose of this topic, the methods covered
 :::
 
 {{< links hank >}}
+
+{{< app hank >}}

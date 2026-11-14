@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "Input-Output Analysis"
 description: "Output and value-added multipliers and global value chains from domestic and inter-country input-output tables."
 ---
@@ -8,3 +10,5 @@ Introductory paragraph goes here: the purpose of this topic, the methods covered
 :::
 
 {{< links input-output >}}
+
+{{< app input-output >}}

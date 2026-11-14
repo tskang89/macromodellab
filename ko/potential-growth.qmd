@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "잠재성장률 추정"
 description: "통계적 필터, 준구조 모형, 생산함수 접근으로 잠재 GDP와 GDP 갭을 추정한다."
 ---
@@ -8,3 +10,5 @@ description: "통계적 필터, 준구조 모형, 생산함수 접근으로 잠�
 :::
 
 {{< links potential-growth >}}
+
+{{< app potential-growth >}}

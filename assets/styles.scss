@@ -160,6 +160,28 @@ table {
   margin: 1.5rem 0;
 }
 
+// 본문에 끼워 넣은 앱({{< app >}})
+.mml-app {
+  margin: 0.5rem 0 0.4rem;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 3rem);
+    min-height: 640px;
+    border: 0;
+  }
+}
+.mml-app-note {
+  color: $text-muted;
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
 // 첫 화면 목록
 .mml-topics {
   list-style: none;

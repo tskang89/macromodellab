@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "DSGE 모형"
 description: "동태 확률 일반균형 모형의 구성, 해법, 추정을 다룬다."
 ---
@@ -8,3 +10,5 @@ description: "동태 확률 일반균형 모형의 구성, 해법, 추정을 다
 :::
 
 {{< links dsge >}}
+
+{{< app dsge >}}

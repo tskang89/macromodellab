@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "HANK 모형"
 description: "이질적 경제주체 뉴케인지언 모형으로 분배와 통화·재정정책의 상호작용을 분석한다."
 ---
@@ -8,3 +10,5 @@ description: "이질적 경제주체 뉴케인지언 모형으로 분배와 통�
 :::
 
 {{< links hank >}}
+
+{{< app hank >}}

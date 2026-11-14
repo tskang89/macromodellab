@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "산업연관표 분석"
 description: "국내·국제 산업연관표로 생산·부가가치 유발효과와 글로벌 가치사슬을 분석한다."
 ---
@@ -8,3 +10,5 @@ description: "국내·국제 산업연관표로 생산·부가가치 유발효�
 :::
 
 {{< links input-output >}}
+
+{{< app input-output >}}

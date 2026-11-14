@@ -1,4 +1,6 @@
 ---
+page-layout: full
+toc: false
 title: "Neutral Interest Rate"
 description: "Estimating the real neutral rate with several models and gauging the monetary policy stance."
 ---
@@ -8,3 +10,5 @@ Introductory paragraph goes here: the purpose of this topic, the methods covered
 :::
 
 {{< links neutral-rate >}}
+
+{{< app neutral-rate >}}
