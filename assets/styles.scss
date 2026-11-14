@@ -199,7 +199,7 @@ body.mml-fullapp {
     padding: 0 !important;
     max-width: none !important;
     width: 100%;
-    grid-column: body-content-start / screen-end !important;
+    grid-column: body-start / screen-end !important;   // 사이드바 바로 옆부터(틈 없이)
   }
   @media (max-width: 991.98px) {
     main.content { grid-column: screen-start / screen-end !important; }

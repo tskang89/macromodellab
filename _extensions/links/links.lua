@@ -70,10 +70,15 @@ return {
     local key = str(args[1])
     local lang = str(meta.lang):sub(1, 2)
     local entry = meta.links and meta.links[key] or nil
-    local live = entry and str(entry.app) ~= ""
+    local url = entry and str(entry.app) or ""
+    local live = url ~= ""
+    local isapp = url:match("%.streamlit%.app") ~= nil   -- 계산 앱이면 '실행', 그 밖(교재 등)은 '열람'
     local text
-    if lang == "en" then text = live and "Live" or "Coming soon"
-    else text = live and "실행 가능" or "준비 중" end
+    if lang == "en" then
+      text = (not live) and "Coming soon" or (isapp and "Live" or "Read online")
+    else
+      text = (not live) and "준비 중" or (isapp and "실행 가능" or "열람 가능")
+    end
     return pandoc.RawInline("html", string.format('<span class="mml-chip %s">%s</span>',
       live and "is-live" or "is-soon", text))
   end,
@@ -92,14 +97,17 @@ return {
     end
     -- Streamlit Cloud 의 기본 주소는 앱을 한 겹 더 싼 틀을 주는데, 다른 사이트 안에
     -- 넣으면 그 틀이 앱 높이를 150px 로 묶는다. 앱 본체(/~/+/)를 직접 연다.
+    -- Streamlit 이 아닌 주소(예: 교재 사이트)는 그대로 넣는다.
     local src = url
-    if src:match("%.streamlit%.app") and not src:find("/~/+/", 1, true) then
-      local base, query = src:match("^([^?]*)%??(.*)$")
-      base = base:gsub("/+$", "")
-      src = base .. "/~/+/" .. (query ~= "" and ("?" .. query) or "")
+    if src:match("%.streamlit%.app") then
+      if not src:find("/~/+/", 1, true) then
+        local base, query = src:match("^([^?]*)%??(.*)$")
+        base = base:gsub("/+$", "")
+        src = base .. "/~/+/" .. (query ~= "" and ("?" .. query) or "")
+      end
+      local sep = src:find("?", 1, true) and "&" or "?"
+      src = src .. sep .. "embed=true&embed_options=light_theme"
     end
-    local sep = src:find("?", 1, true) and "&" or "?"
-    src = src .. sep .. "embed=true&embed_options=light_theme"
     -- body 에 mml-fullapp 를 달면 CSS 가 제목·소개·바닥글을 숨기고 앱이 본문 영역 전체를 채운다.
     return pandoc.RawBlock("html", string.format(
       '<script>document.body.classList.add("mml-fullapp")</script>' ..

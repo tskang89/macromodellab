@@ -23,10 +23,10 @@ links:
     repo: ""
     doc: ""
   dsge:
-    app: ""
+    app: "https://tskang89.github.io/dsge-book/"      # 지금은 교재 사이트(암호). 계산 앱이 생기면 바꾼다.
     repo: ""
     doc: ""
   hank:
-    app: ""
+    app: "https://tskang89.github.io/ha-dsge-book/"   # 지금은 HA-DSGE 교재 사이트(암호).
     repo: ""
     doc: ""
