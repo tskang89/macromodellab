@@ -1,0 +1,21 @@
+---
+sidebar: en
+title: "Macro Model Lab"
+description: "Macroeconomic models and estimation methods"
+toc: false
+---
+
+::: {.mml-placeholder}
+Site introduction goes here.
+:::
+
+
+```{=html}
+<ul class="mml-topics">
+<li><a href="potential-growth.html">Potential Growth</a><span class="mml-topic-desc">Estimating potential GDP and the output gap with statistical filters, semi-structural models and the production function approach.</span></li>
+<li><a href="neutral-rate.html">Neutral Interest Rate</a><span class="mml-topic-desc">Estimating the real neutral rate with several models and gauging the monetary policy stance.</span></li>
+<li><a href="input-output.html">Input-Output Analysis</a><span class="mml-topic-desc">Output and value-added multipliers and global value chains from domestic and inter-country input-output tables.</span></li>
+<li><a href="dsge.html">DSGE Models</a><span class="mml-topic-desc">Building, solving and estimating dynamic stochastic general equilibrium models.</span></li>
+<li><a href="hank.html">HANK Models</a><span class="mml-topic-desc">Heterogeneous-agent New Keynesian models: distribution and the transmission of monetary and fiscal policy.</span></li>
+</ul>
+```

@@ -1,0 +1,90 @@
+project:
+  type: website
+  output-dir: _site
+  # 렌더할 파일을 명시한다(README.md 등은 사이트에 올리지 않는다).
+  render:
+    - index.qmd
+    - ko/*.qmd
+    - guide/*.qmd
+    # 영어판을 열 때: 아래 줄 주석을 풀고, website.sidebar 의 en 블록과
+    # ko 블록의 tools(언어 전환) 주석도 푼다. 자세한 절차는 README.md.
+    # - en/*.qmd
+  resources:
+    - CNAME
+
+# 메뉴별 외부 링크(Streamlit 앱·GitHub 저장소 등)는 이 파일 한 곳에서 관리한다.
+metadata-files:
+  - _links.yml
+
+lang: ko-KR
+
+website:
+  title: "Macro Model Lab"
+  description: "거시경제 모형과 추정 방법을 정리하는 연구 사이트"
+  site-url: "https://macromodellab.com"
+  favicon: assets/favicon.svg
+  page-navigation: false
+  bread-crumbs: false
+  search:
+    location: sidebar
+    type: textbox
+  sidebar:
+    # --- 한국어 사이드바(기본) ---------------------------------------------
+    - id: ko
+      title: "Macro Model Lab"
+      style: docked
+      search: true
+      # tools:
+      #   - icon: translate
+      #     text: "English"
+      #     href: en/index.qmd
+      contents:
+        - text: "잠재성장률 추정"
+          href: ko/potential-growth.qmd
+        - text: "중립금리 추정"
+          href: ko/neutral-rate.qmd
+        - text: "산업연관표 분석"
+          href: ko/input-output.qmd
+        - text: "DSGE 모형"
+          href: ko/dsge.qmd
+        - text: "HANK 모형"
+          href: ko/hank.qmd
+    # --- 영어 사이드바(준비 중) --------------------------------------------
+    # - id: en
+    #   title: "Macro Model Lab"
+    #   style: docked
+    #   search: true
+    #   tools:
+    #     - icon: translate
+    #       text: "한국어"
+    #       href: index.qmd
+    #   contents:
+    #     - text: "Potential Growth"
+    #       href: en/potential-growth.qmd
+    #     - text: "Neutral Interest Rate"
+    #       href: en/neutral-rate.qmd
+    #     - text: "Input-Output Analysis"
+    #       href: en/input-output.qmd
+    #     - text: "DSGE Models"
+    #       href: en/dsge.qmd
+    #     - text: "HANK Models"
+    #       href: en/hank.qmd
+  page-footer:
+    left: "© 2026 Macro Model Lab"
+    right: "macromodellab.com"
+
+format:
+  html:
+    theme: [cosmo, assets/styles.scss]
+    include-in-header: assets/head.html
+    html-math-method: katex
+    highlight-style: github
+    code-copy: true
+    code-overflow: scroll
+    toc: true
+    toc-depth: 3
+    fig-align: center
+    lightbox: true
+    anchor-sections: true
+    smooth-scroll: false
+    link-external-newwindow: true

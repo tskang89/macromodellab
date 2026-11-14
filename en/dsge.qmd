@@ -1,0 +1,10 @@
+---
+title: "DSGE Models"
+description: "Building, solving and estimating dynamic stochastic general equilibrium models."
+---
+
+::: {.mml-placeholder}
+Introductory paragraph goes here: the purpose of this topic, the methods covered, and the data and results.
+:::
+
+{{< links dsge >}}

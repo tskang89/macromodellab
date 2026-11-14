@@ -1,0 +1,180 @@
+/*-- scss:defaults --*/
+
+// 글꼴: 본문 Pretendard(한·영 겸용), 코드 JetBrains Mono → 시스템 고정폭
+$font-family-sans-serif: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+  "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "JetBrains Mono", "D2Coding", Consolas, "SFMono-Regular", Menlo, monospace;
+
+// 색: 남색 한 가지에 회색 단계만 쓰는 절제된 구성
+$primary: #1f3a5f;
+$body-color: #1f2328;
+$body-bg: #ffffff;
+$link-color: #1f4e8c;
+$text-muted: #5b6472;
+$border-color: #e3e6ea;
+
+$headings-font-weight: 650;
+$headings-color: #14243a;
+
+$sidebar-bg: #f6f7f9;
+$sidebar-fg: #3d4553;
+$sidebar-hl: $primary;
+
+$code-block-bg: #f6f8fa;
+$code-block-border-left: #c9d1db;
+$code-color: #8a2c45;
+
+$footer-bg: #ffffff;
+$footer-fg: #6a7280;
+
+/*-- scss:rules --*/
+
+body {
+  line-height: 1.75;
+  word-break: keep-all;          // 한국어 어절 단위 줄바꿈
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+main.content {
+  font-size: 1.02rem;
+}
+
+// 제목 영역
+#title-block-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+
+  h1.title {
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+  }
+  .description, .subtitle {
+    color: $text-muted;
+    font-size: 1.05rem;
+  }
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin-top: 2.4rem;
+  border-bottom: none;
+}
+h3 {
+  font-size: 1.18rem;
+  margin-top: 1.8rem;
+}
+
+// 사이드바
+#quarto-sidebar {
+  border-right: 1px solid $border-color;
+
+  .sidebar-title {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: $headings-color;
+  }
+  .sidebar-item-text {
+    font-size: 0.96rem;
+  }
+  .sidebar-link.active .menu-text {
+    font-weight: 650;
+  }
+}
+
+// 수식: 긴 식은 가로 스크롤, 위아래 여백
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.4rem 0;
+}
+.katex {
+  font-size: 1.06em;
+}
+
+// 코드 블록
+div.sourceCode, pre.sourceCode {
+  border-radius: 4px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+code:not(.sourceCode code) {
+  font-size: 0.88em;
+}
+
+// 그림·표
+.quarto-figure img, figure img {
+  border: 1px solid #eceef1;
+  border-radius: 3px;
+  background: #fff;
+}
+.figure-caption, figcaption {
+  color: $text-muted;
+  font-size: 0.9rem;
+}
+table {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.94rem;
+}
+
+// 플레이스홀더 상자
+.mml-placeholder {
+  border-left: 3px solid $code-block-border-left;
+  background: $sidebar-bg;
+  color: $text-muted;
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0 1.5rem;
+  border-radius: 0 4px 4px 0;
+
+  p:last-child { margin-bottom: 0; }
+}
+
+// 외부 연결 버튼({{< links >}})
+.mml-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.mml-btn {
+  display: inline-block;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid $primary;
+  border-radius: 4px;
+  color: $primary;
+  font-size: 0.94rem;
+  text-decoration: none;
+
+  &:hover { background: rgba($primary, 0.06); color: $primary; }
+}
+.mml-btn-primary {
+  background: $primary;
+  color: #fff;
+
+  &:hover { background: darken($primary, 6%); color: #fff; }
+}
+.mml-links-pending {
+  color: $text-muted;
+  font-size: 0.92rem;
+  margin: 1.5rem 0;
+}
+
+// 첫 화면 목록
+.mml-topics {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid $border-color;
+  }
+  li:first-child { border-top: 1px solid $border-color; }
+  a { font-weight: 650; text-decoration: none; }
+  .mml-topic-desc {
+    display: block;
+    color: $text-muted;
+    font-size: 0.94rem;
+    margin-top: 0.15rem;
+  }
+}

@@ -1,0 +1,21 @@
+---
+sidebar: ko
+title: "Macro Model Lab"
+description: "거시경제 모형과 추정 방법을 정리하는 연구 사이트"
+toc: false
+---
+
+::: {.mml-placeholder}
+사이트 소개 문단 자리입니다.
+:::
+
+
+```{=html}
+<ul class="mml-topics">
+<li><a href="ko/potential-growth.html">잠재성장률 추정</a><span class="mml-topic-desc">통계적 필터, 준구조 모형, 생산함수 접근으로 잠재 GDP와 GDP 갭을 추정한다.</span></li>
+<li><a href="ko/neutral-rate.html">중립금리 추정</a><span class="mml-topic-desc">실질 중립금리를 여러 모형으로 추정하고 통화정책 기조를 판단한다.</span></li>
+<li><a href="ko/input-output.html">산업연관표 분석</a><span class="mml-topic-desc">국내·국제 산업연관표로 생산·부가가치 유발효과와 글로벌 가치사슬을 분석한다.</span></li>
+<li><a href="ko/dsge.html">DSGE 모형</a><span class="mml-topic-desc">동태 확률 일반균형 모형의 구성, 해법, 추정을 다룬다.</span></li>
+<li><a href="ko/hank.html">HANK 모형</a><span class="mml-topic-desc">이질적 경제주체 뉴케인지언 모형으로 분배와 통화·재정정책의 상호작용을 분석한다.</span></li>
+</ul>
+```

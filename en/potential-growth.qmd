@@ -1,0 +1,10 @@
+---
+title: "Potential Growth"
+description: "Estimating potential GDP and the output gap with statistical filters, semi-structural models and the production function approach."
+---
+
+::: {.mml-placeholder}
+Introductory paragraph goes here: the purpose of this topic, the methods covered, and the data and results.
+:::
+
+{{< links potential-growth >}}

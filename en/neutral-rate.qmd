@@ -1,0 +1,10 @@
+---
+title: "Neutral Interest Rate"
+description: "Estimating the real neutral rate with several models and gauging the monetary policy stance."
+---
+
+::: {.mml-placeholder}
+Introductory paragraph goes here: the purpose of this topic, the methods covered, and the data and results.
+:::
+
+{{< links neutral-rate >}}
