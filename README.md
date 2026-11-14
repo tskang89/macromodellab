@@ -24,13 +24,6 @@ GitHub Pages 로 배포한다.
 빈 칸은 버튼이 나오지 않고, 셋 다 비면 '준비 중' 안내가 나온다.
 한국어판과 영어판이 같은 값을 쓴다.
 
-## 첫 화면 인트로
-
-`assets/intro/intro.mp4`(+`intro-poster.png`)는 Manim 으로 만든다. 장면은 `scripts/intro_scene.py`,
-렌더는 `.venv\Scripts\python.exe scripts\build_intro.py`(초안은 `--draft`). 첫 화면은 세션마다 한 번
-재생하고(건너뛰기·Esc·Enter), 끝나면 메뉴 카드가 차례로 나타난다. 움직임 줄이기 설정이면 바로 메뉴.
-이 PC 의 MiKTeX 에는 `preview.sty` 가 없어 수식은 `article` 틀로 조판한다(장면 파일 머리 참고).
-
 ## 영어판 열기
 
 1. `en/*.qmd` 의 본문을 채운다(폴더의 `_metadata.yml` 이 `lang: en-US` 를 준다).

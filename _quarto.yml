@@ -11,7 +11,6 @@ project:
     # - en/*.qmd
   resources:
     - CNAME
-    - assets/intro/*
 
 # 메뉴별 외부 링크(Streamlit 앱·GitHub 저장소 등)는 이 파일 한 곳에서 관리한다.
 metadata-files:
