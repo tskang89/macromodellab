@@ -54,7 +54,7 @@ body-classes: mml-home
 
 <section class="mml-hero mml-reveal">
   <p class="mml-eyebrow">Macro Model Lab</p>
-  <h1 class="mml-hero-title">거시경제 모형을 직접 돌려 보는 연구실</h1>
+  <h1 class="mml-hero-title">거시경제 모형 연구실</h1>
   <p class="mml-hero-lead">잠재성장률과 중립금리 추정, 산업연관 분석, 구조 모형까지 — 방법론을 정리하고 실제 자료로 계산합니다.</p>
   <svg class="mml-hero-art" viewBox="0 0 400 120" aria-hidden="true" preserveAspectRatio="none">
     <path class="art-area" d="M0,96 C40,84 60,70 90,78 C120,86 135,104 165,88 C195,72 205,40 240,46 C275,52 285,70 320,58 C350,48 370,36 400,30 L400,40 L0,104 Z"/>
