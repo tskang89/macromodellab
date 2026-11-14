@@ -11,15 +11,15 @@
 # ---------------------------------------------------------------------------
 links:
   potential-growth:
-    app: ""
+    app: "https://macro-lab.streamlit.app/potential-growth"
     repo: ""
     doc: ""
   neutral-rate:
-    app: ""
+    app: "https://macro-lab.streamlit.app/neutral-rate"
     repo: ""
     doc: ""
   input-output:
-    app: ""
+    app: "https://macro-lab.streamlit.app/io-domestic"
     repo: ""
     doc: ""
   dsge:
