@@ -9,6 +9,11 @@
 # '연결 준비 중' 안내가 나온다. 한국어판·영어판이 같은 주소를 함께 쓴다.
 # 각 페이지는 {{< links 키 >}} 로 이 값을 불러온다(_extensions/links).
 # ---------------------------------------------------------------------------
+
+# 의견 보내기: 앱 페이지 오른쪽 아래에 '의견 보내기' 메일 버튼을 단다(빈 문자열이면 버튼 없음).
+# 개인 주소를 사이트에 노출하지 않도록 Cloudflare Email Routing 으로 받은 주소를 쓴다(README 참고).
+feedback: ""
+
 links:
   potential-growth:
     app: "https://macro-lab-potential.streamlit.app"

@@ -29,6 +29,31 @@ local function esc(s)
   return s
 end
 
+-- mailto 주소용 퍼센트 인코딩(UTF-8 바이트 단위)
+local function urlenc(s)
+  return (s:gsub("[^%w%-%._~]", function(c) return string.format("%%%02X", string.byte(c)) end))
+end
+
+-- 의견 보내기: _links.yml 의 feedback 주소가 있으면 메뉴 이름이 제목에 든 메일 양식을 연다
+local FEEDBACK = {
+  ko = { label = "의견 보내기", tip = "이 메뉴에 대한 의견을 메일로 보냅니다",
+         subject = "[Macro Model Lab] %s — 의견",
+         body = "화면·탭:\n수치·기간:\n의견:\n\n보내신 분(성함·소속):\n" },
+  en = { label = "Send feedback", tip = "Email feedback about this page",
+         subject = "[Macro Model Lab] %s — feedback",
+         body = "Screen / tab:\nFigures / period:\nComment:\n\nYour name and affiliation:\n" },
+}
+
+local function feedback_link(meta, lang)
+  local addr = str(meta.feedback)
+  if addr == "" then return "" end
+  local F = FEEDBACK[lang] or FEEDBACK.ko
+  local subject = string.format(F.subject, str(meta.title))
+  local body = F.body:gsub("\n", "\r\n")
+  local href = "mailto:" .. addr .. "?subject=" .. urlenc(subject) .. "&body=" .. urlenc(body)
+  return string.format('<a class="mml-app-feedback" href="%s" title="%s">%s</a>', esc(href), F.tip, F.label)
+end
+
 return {
   ["links"] = function(args, kwargs, meta)
     local key = str(args[1])
@@ -113,7 +138,8 @@ return {
       '<script>document.body.classList.add("mml-fullapp")</script>' ..
       '<div class="mml-app"><iframe src="%s" title="%s" ' ..
       'allow="clipboard-write; fullscreen"></iframe>' ..
-      '<a class="mml-app-open" href="%s" target="_blank" rel="noopener" title="%s">%s ↗</a></div>',
-      esc(src), L.frame, esc(url), L.wake, L.app))
+      '<div class="mml-app-tools">%s' ..
+      '<a class="mml-app-open" href="%s" target="_blank" rel="noopener" title="%s">%s ↗</a></div></div>',
+      esc(src), L.frame, feedback_link(meta, lang), esc(url), L.wake, L.app))
   end
 }

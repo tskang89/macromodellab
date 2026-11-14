@@ -214,10 +214,26 @@ body.mml-fullapp {
   height: 100dvh;
   iframe { display: block; width: 100%; height: 100%; border: 0; }
 }
-.mml-app-open {
+.mml-app-tools {
   position: absolute;
   right: 0.9rem;
   bottom: 0.7rem;
+  display: flex;
+  gap: 0.4rem;
+}
+.mml-app-feedback {
+  padding: 0.22rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: $navy-700;
+  border: 1px solid $navy-700;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px -3px rgba($navy-900, 0.4);
+  &:hover { background: darken($navy-700, 6%); color: #fff; }
+}
+.mml-app-open {
   padding: 0.22rem 0.65rem;
   font-size: 0.8rem;
   color: $text-muted;
