@@ -3,19 +3,112 @@ sidebar: ko
 title: "Macro Model Lab"
 description: "거시경제 모형과 추정 방법을 정리하는 연구 사이트"
 toc: false
+anchor-sections: false
+body-classes: mml-home
 ---
 
-::: {.mml-placeholder}
+```{=html}
+<!-- 인트로: 세션당 한 번 재생(assets/intro, scripts/intro_scene.py). 끝나거나 건너뛰면 메뉴가 나타난다. -->
+<div id="mml-intro" class="mml-intro" aria-label="인트로 애니메이션">
+  <video id="mml-intro-video" muted playsinline preload="auto" poster="assets/intro/intro-poster.png">
+    <source src="assets/intro/intro.mp4" type="video/mp4">
+  </video>
+  <button type="button" class="mml-intro-skip" id="mml-intro-skip">건너뛰기 <span aria-hidden="true">→</span></button>
+</div>
+<noscript><style>.mml-intro{display:none!important}.mml-reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script>
+(function () {
+  var KEY = "mml-intro-seen";
+  var box = document.getElementById("mml-intro");
+  var vid = document.getElementById("mml-intro-video");
+  var body = document.body;
+  var seen = false;
+  try { seen = sessionStorage.getItem(KEY) === "1"; } catch (e) {}
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finished = false;
+  function reveal() { body.classList.add("mml-revealed"); }
+  function done() {
+    if (finished) return;
+    finished = true;
+    try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+    box.classList.add("is-out");
+    body.classList.remove("mml-intro-on");
+    reveal();
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 900);
+  }
+  window.mmlReplayIntro = function () {
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  };
+  if (seen || reduce) { box.parentNode.removeChild(box); reveal(); return; }
+  body.classList.add("mml-intro-on");
+  vid.addEventListener("ended", done);
+  vid.addEventListener("error", done, true);
+  document.getElementById("mml-intro-skip").addEventListener("click", done);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" || e.key === "Enter") done(); });
+  var p = vid.play();
+  if (p && p.catch) p.catch(done);          // 자동 재생이 막히면 바로 메뉴로
+  setTimeout(done, 25000);                  // 안전장치
+})();
+</script>
+
+<section class="mml-hero mml-reveal">
+  <p class="mml-eyebrow">Macro Model Lab</p>
+  <h1 class="mml-hero-title">거시경제 모형을 직접 돌려 보는 연구실</h1>
+  <p class="mml-hero-lead">잠재성장률과 중립금리 추정, 산업연관 분석, 구조 모형까지 — 방법론을 정리하고 실제 자료로 계산합니다.</p>
+  <svg class="mml-hero-art" viewBox="0 0 400 120" aria-hidden="true" preserveAspectRatio="none">
+    <path class="art-area" d="M0,96 C40,84 60,70 90,78 C120,86 135,104 165,88 C195,72 205,40 240,46 C275,52 285,70 320,58 C350,48 370,36 400,30 L400,40 L0,104 Z"/>
+    <path class="art-trend" d="M0,104 L400,40"/>
+    <path class="art-gdp" d="M0,96 C40,84 60,70 90,78 C120,86 135,104 165,88 C195,72 205,40 240,46 C275,52 285,70 320,58 C350,48 370,36 400,30"/>
+  </svg>
+  <button type="button" class="mml-replay" onclick="mmlReplayIntro()">인트로 다시 보기 ↻</button>
+</section>
+```
+
+::: {.mml-placeholder .mml-reveal}
 사이트 소개 문단 자리입니다.
 :::
 
+:::::: {.mml-cards}
 
-```{=html}
-<ul class="mml-topics">
-<li><a href="ko/potential-growth.html">잠재성장률 추정</a><span class="mml-topic-desc">통계적 필터, 준구조 모형, 생산함수 접근으로 잠재 GDP와 GDP 갭을 추정한다.</span></li>
-<li><a href="ko/neutral-rate.html">중립금리 추정</a><span class="mml-topic-desc">실질 중립금리를 여러 모형으로 추정하고 통화정책 기조를 판단한다.</span></li>
-<li><a href="ko/input-output.html">산업연관표 분석</a><span class="mml-topic-desc">국내·국제 산업연관표로 생산·부가가치 유발효과와 글로벌 가치사슬을 분석한다.</span></li>
-<li><a href="ko/dsge.html">DSGE 모형</a><span class="mml-topic-desc">동태 확률 일반균형 모형의 구성, 해법, 추정을 다룬다.</span></li>
-<li><a href="ko/hank.html">HANK 모형</a><span class="mml-topic-desc">이질적 경제주체 뉴케인지언 모형으로 분배와 통화·재정정책의 상호작용을 분석한다.</span></li>
-</ul>
-```
+::: {.mml-card .mml-reveal}
+[01]{.mml-card-num} {{< status potential-growth >}}
+
+[잠재성장률 추정](ko/potential-growth.qmd){.mml-card-title .stretched-link}
+
+통계적 필터, 준구조 모형, 생산함수 접근으로 잠재 GDP와 GDP 갭을 추정한다.
+:::
+
+::: {.mml-card .mml-reveal}
+[02]{.mml-card-num} {{< status neutral-rate >}}
+
+[중립금리 추정](ko/neutral-rate.qmd){.mml-card-title .stretched-link}
+
+실질 중립금리를 여러 모형으로 추정하고 통화정책 기조를 판단한다.
+:::
+
+::: {.mml-card .mml-reveal}
+[03]{.mml-card-num} {{< status input-output >}}
+
+[산업연관표 분석](ko/input-output.qmd){.mml-card-title .stretched-link}
+
+국내·국제 산업연관표로 생산·부가가치 유발효과와 글로벌 가치사슬을 분석한다.
+:::
+
+::: {.mml-card .mml-reveal}
+[04]{.mml-card-num} {{< status dsge >}}
+
+[DSGE 모형](ko/dsge.qmd){.mml-card-title .stretched-link}
+
+동태 확률 일반균형 모형의 구성, 해법, 추정을 다룬다.
+:::
+
+::: {.mml-card .mml-reveal}
+[05]{.mml-card-num} {{< status hank >}}
+
+[HANK 모형](ko/hank.qmd){.mml-card-title .stretched-link}
+
+이질적 경제주체 뉴케인지언 모형으로 분배와 통화·재정정책의 상호작용을 분석한다.
+:::
+
+::::::

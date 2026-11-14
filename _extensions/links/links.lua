@@ -62,6 +62,22 @@ return {
       '<div class="mml-links">' .. table.concat(items) .. "</div>")
   end,
 
+  -- {{< status 키 >}} : 앱 주소가 있으면 '실행 가능', 없으면 '준비 중' 표지(첫 화면 카드용)
+  ["status"] = function(args, kwargs, meta)
+    if not quarto.doc.is_format("html") then
+      return pandoc.Null()
+    end
+    local key = str(args[1])
+    local lang = str(meta.lang):sub(1, 2)
+    local entry = meta.links and meta.links[key] or nil
+    local live = entry and str(entry.app) ~= ""
+    local text
+    if lang == "en" then text = live and "Live" or "Coming soon"
+    else text = live and "실행 가능" or "준비 중" end
+    return pandoc.RawInline("html", string.format('<span class="mml-chip %s">%s</span>',
+      live and "is-live" or "is-soon", text))
+  end,
+
   ["app"] = function(args, kwargs, meta)
     if not quarto.doc.is_format("html") then
       return pandoc.Null()
