@@ -9,11 +9,18 @@ local LABELS = {
   ko = { app = "새 창에서 열기", repo = "GitHub 저장소", doc = "설명서",
          pending = "외부 연결(앱·저장소)은 준비 중입니다.",
          frame = "분석 앱",
-         wake = "화면이 비어 있거나 'Zzzz' 안내가 나오면 앱이 잠들어 있는 것입니다. 깨우는 버튼을 누르고 1분쯤 기다리거나 새 창에서 여세요." },
+         wake = "화면이 비어 있거나 'Zzzz' 안내가 나오면 앱이 잠들어 있는 것입니다. 깨우는 버튼을 누르고 1분쯤 기다리거나 새 창에서 여세요.",
+         -- 앱 뒤에 깔리는 카드: 앱이 그려지면 가려지고, 불러오는 동안·잠들어 비어 있을 때 보인다
+         waitcard = '<p class="mml-wait-title">분석 앱을 불러오는 중입니다</p>' ..
+                    '<p>화면이 계속 비어 있으면 앱이 잠들어 있는 것입니다. 오른쪽 아래 <b>새 창에서 열기</b>를 눌러 ' ..
+                    '<b>Yes, get this app back up!</b>으로 깨운 뒤(1분 안팎) 이 페이지를 새로고침하세요.</p>' },
   en = { app = "Open in new tab", repo = "GitHub repository", doc = "Documentation",
          pending = "Links to the app and repository are coming soon.",
          frame = "Analysis app",
-         wake = "If the frame is blank or says 'Zzzz', the app is asleep: press the wake button and wait about a minute, or open it in a new tab." },
+         wake = "If the frame is blank or says 'Zzzz', the app is asleep: press the wake button and wait about a minute, or open it in a new tab.",
+         waitcard = '<p class="mml-wait-title">Loading the analysis app</p>' ..
+                    '<p>If this stays blank, the app is asleep. Use <b>Open in new tab</b> (bottom right), press ' ..
+                    '<b>Yes, get this app back up!</b>, wait about a minute, then reload this page.</p>' },
 }
 local ORDER = { "app", "repo", "doc" }
 
@@ -136,10 +143,11 @@ return {
     -- body 에 mml-fullapp 를 달면 CSS 가 제목·소개·바닥글을 숨기고 앱이 본문 영역 전체를 채운다.
     return pandoc.RawBlock("html", string.format(
       '<script>document.body.classList.add("mml-fullapp")</script>' ..
-      '<div class="mml-app"><iframe src="%s" title="%s" ' ..
+      '<div class="mml-app"><div class="mml-app-wait" aria-hidden="true">%s</div>' ..
+      '<iframe src="%s" title="%s" ' ..
       'allow="clipboard-write; fullscreen"></iframe>' ..
       '<div class="mml-app-tools">%s' ..
       '<a class="mml-app-open" href="%s" target="_blank" rel="noopener" title="%s">%s ↗</a></div></div>',
-      esc(src), L.frame, feedback_link(meta, lang), esc(url), L.wake, L.app))
+      L.waitcard, esc(src), L.frame, feedback_link(meta, lang), esc(url), L.wake, L.app))
   end
 }

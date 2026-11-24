@@ -212,10 +212,38 @@ body.mml-fullapp {
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  iframe { display: block; width: 100%; height: 100%; border: 0; }
+  iframe { position: relative; z-index: 1; display: block; width: 100%; height: 100%; border: 0; }
 }
+// 앱 뒤의 안내 카드(앱이 그려지면 가려짐). 앱 위에 올라오는 것은 오른쪽 아래 버튼뿐이다.
+.mml-app-wait {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: $text-muted;
+  font-size: 0.95rem;
+  p { max-width: 34em; margin: 0.3rem 0; }
+  .mml-wait-title { font-size: 1.1rem; font-weight: 650; color: $navy-700; }
+  &::before {
+    content: "";
+    width: 28px;
+    height: 28px;
+    margin-bottom: 1rem;
+    border: 3px solid rgba($navy-700, 0.15);
+    border-top-color: $gold;
+    border-radius: 50%;
+    animation: mml-spin 1s linear infinite;
+  }
+}
+@keyframes mml-spin { to { transform: rotate(360deg); } }
 .mml-app-tools {
   position: absolute;
+  z-index: 2;
   right: 0.9rem;
   bottom: 0.7rem;
   display: flex;
